@@ -1,0 +1,349 @@
+.hidden {
+    display: none !important;
+}
+
+:root {
+  --primary-color: #1976D2;         /* Android Material Blue */
+  --primary-dark: #1565C0;
+  --primary-light: #E3F2FD;
+  --secondary-color: #5F6368;
+  --surface-color: #FFFFFF;
+  --background-color: #F8F9FA;
+  --card-background: #FFFFFF;
+  --text-primary: #202124;
+  --text-secondary: #5F6368;
+  --border-color: #E0E0E0;
+  --error-color: #D32F2F;
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --shadow-card: 0 2px 6px rgba(0, 0, 0, 0.08);
+  --shadow-floating: 0 4px 12px rgba(0, 0, 0, 0.18);
+  --font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", sans-serif;
+}
+
+/* --------------------------------------------------------------------------
+   2. CSS Reset 
+   -------------------------------------------------------------------------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent; 
+  user-select: none;                       
+}
+
+input, textarea, select {
+  user-select: auto;                        /* Allow text selection in form elements */
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    margin-top: 5px;
+}
+
+header, h1 {
+    color: var(--primary-dark);
+}
+
+header, p {
+    font-size: medium;
+    color: #202124;
+}
+
+#view-reports-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 9px;
+    padding: 10px;
+    width: 180px;
+    border: 1px solid #202124;
+    margin-top: 70px;
+    background-color: #d7dee7;
+}
+
+/*6. Forms & Input Elements*/
+.form-card {
+  display: flex;
+  justify-self: center;
+  justify-content: center;
+  background: var(--card-background);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  margin-top: 16px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border-color);
+  width: 370px;
+}
+
+.form-card h2 {
+  font-size: 1.25rem;
+  margin-bottom: 16px;
+  color: var(--text-primary);
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.form-field label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.form-field input[type="text"],
+.form-field input[type="email"],
+.form-field input[type="password"],
+.form-field select,
+.form-field textarea {
+  width: 350px;
+  min-height: 48px; /* Android touch-friendly standard */
+  padding: 12px 14px;
+  font-size: 1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  background-color: #FAFAFA;
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  border-color: var(--primary-color);
+  background-color: #FFFFFF;
+}
+
+.form-field textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+#location-status {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}
+
+/* ==========================================================================
+   Category Filter Chips
+   ========================================================================== */
+#category-row {
+  display: flex;
+  flex-wrap: wrap;       /* Allows chips to move to the next line instead of clipping */
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 16px;
+  width: 100%;
+  max-width: 400px;
+}
+
+#category-row::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+
+.chip {
+  min-height: 36px;
+  padding: 6px 16px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  background-color: var(--surface-color);
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  box-shadow: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.chip.active {
+  background-color: var(--primary-light);
+  color: var(--primary-dark);
+  border-color: var(--primary-color);
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   Report List & Cards
+   ========================================================================== */
+#report-section,
+#single-report-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 400px;
+  padding: 0 16px;
+}
+
+#report-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.report-card {
+  background-color: var(--card-background);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  box-shadow: var(--shadow-card);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.report-card:active {
+  transform: scale(0.98);
+  box-shadow: none;
+}
+
+.report-card h3 {
+  font-size: 1.1rem;
+  color: var(--text-primary);
+}
+
+.report-card p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.report-card span {
+  font-size: 0.8rem;
+  color: var(--secondary-color);
+}
+
+/* ==========================================================================
+   Single Report View
+   ========================================================================== */
+#single-report-card {
+  width: 100%;
+  background-color: var(--card-background);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#single-report-card h3 {
+  font-size: 1.25rem;
+  color: var(--primary-dark);
+}
+
+#single-report-card p {
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-color);
+}
+
+.location-span {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.mini-select {
+  padding: 6px 10px;
+  font-size: 0.85rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  background-color: var(--background-color);
+  color: var(--text-primary);
+}
+
+.single-report-actions {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 70px;
+    width: 100%;
+}
+
+/* Danger Button Style */
+button.danger,
+.button.danger {
+  background-color: var(--error-color);
+  color: #ffffff;
+}
+
+button.danger:active,
+.button.danger:active {
+  background-color: #b71c1c;
+}
+
+/*7. Buttons Layout*/
+button, .button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 10px 20px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: var(--radius-lg);
+  border: none;
+  background-color: var(--primary-color);
+  color: #FFFFFF;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+button:active, .button:active {
+  background-color: var(--primary-dark);
+  transform: scale(0.97);
+}
+
+button.secondary, .secondary-button {
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 1px solid var(--border-color);
+  box-shadow: none;
+}
+
+button.secondary:active, .secondary-button:active {
+  background-color: var(--primary-light);
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.form-actions button {
+  flex: 1;
+}
