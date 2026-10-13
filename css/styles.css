@@ -351,4 +351,5 @@ button.secondary:active, .secondary-button:active {
 .test-css {
   display: none;
   margin-top: auto;
+  align-items: center;
 }
